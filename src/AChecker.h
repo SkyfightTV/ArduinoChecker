@@ -2,13 +2,23 @@
 #include <algorithm>
 
 enum TYPE {
-    DHT_11,
-    PHOTORESISTOR
+    DHT11,
+    DHT12,
+    DHT21,
+    DHT22,
+    AM2301,
+    PHOTORESISTOR,
+    CTN,
+    RTC_CLOCK,
+    POTENTIOMETER,
+    SLIDE_SWITCH,
+    INFRARED_SENSOR
 };
 
 enum PIN_TYPE {
     ANALOG,
-    DIGITAL
+    DIGITAL,
+    RTC
 };
 
 enum RESULT_TYPE {
@@ -23,9 +33,23 @@ class Result {
         RESULT_TYPE resultType = static_cast<RESULT_TYPE>(NULL);
         PIN_TYPE pinType = static_cast<PIN_TYPE>(NULL);
         int pin = 0;
-        int *values = {};
+        double *values = {};
     public:
         explicit Result(const RESULT_TYPE resultType, const PIN_TYPE pinType, const int pin, int *values) {
+            this->resultType = resultType;
+            this->pinType = pinType;
+            this->pin = pin;
+            std::copy(values, values + sizeof(values), this->values);
+        }
+
+        explicit Result(const RESULT_TYPE resultType, const PIN_TYPE pinType, const int pin, float *values) {
+            this->resultType = resultType;
+            this->pinType = pinType;
+            this->pin = pin;
+            std::copy(values, values + sizeof(values), this->values);
+        }
+
+        explicit Result(const RESULT_TYPE resultType, const PIN_TYPE pinType, const int pin, double *values) {
             this->resultType = resultType;
             this->pinType = pinType;
             this->pin = pin;
@@ -44,12 +68,20 @@ class Result {
             return this->pin;
         }
 
-        int *getValues() const {
+        double *getValues() const {
             return this->values;
         }
 };
 
 Result check(TYPE type, int pin, bool debug);
+
+Result check(TYPE type, bool debug){
+    check(type, -1, debug);
+}
+
+Result check(TYPE type){
+    check(type, -1, true);
+}
 
 Result check(TYPE type, int pin) {
     check(type, pin, true);
