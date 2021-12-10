@@ -1,5 +1,5 @@
 #include "../lib/arduino/Arduino.h"
-#include <algorithm>
+#include <iostream>
 
 enum TYPE {
     DHT11,
