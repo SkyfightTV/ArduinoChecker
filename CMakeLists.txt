@@ -3,4 +3,4 @@ project(ArduinoChecker)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(ArduinoChecker src/AChecker.cpp)
+add_executable(ArduinoChecker src/AChecker.cpp src/utils/Result.cpp)

@@ -1,4 +1,3 @@
-#include "AChecker.h"
 #include "utils/Checker.h"
 
 Result check(TYPE type, bool debug){
