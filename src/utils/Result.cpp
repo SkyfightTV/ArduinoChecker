@@ -1,9 +1,4 @@
-static void copy(double *from, double *to)
-{
-    int n = length(from);
-    for (int i = 0; i < n; i++)
-        to[i] = from[i];
-}
+#include "Result.h"
 
 static int length(const double *s)
 {
@@ -11,6 +6,13 @@ static int length(const double *s)
     for (int i = 0; s[i] != '\0'; i++)
         n++;
     return n;
+}
+
+static void copy(double *from, double *to)
+{
+    int n = length(from);
+    for (int i = 0; i < n; i++)
+        to[i] = from[i];
 }
 
 Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, int *values)

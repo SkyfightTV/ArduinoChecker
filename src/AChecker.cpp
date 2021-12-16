@@ -1,17 +1,5 @@
 #include "utils/Checker.h"
 
-Result check(TYPE type, bool debug){
-    check(type, -1, debug);
-}
-
-Result check(TYPE type){
-    check(type, -1, true);
-}
-
-Result check(TYPE type, int pin) {
-    check(type, pin, true);
-}
-
 Result check(TYPE type, int pin, bool debug) {
     float values[] = {};
     if (pin == 0)
@@ -40,4 +28,16 @@ Result check(TYPE type, int pin, bool debug) {
         default:
             return Result(TYPE_NULL, static_cast<const PIN_TYPE>(NULL), pin, values);
     }
+}
+
+Result check(TYPE type, bool debug){
+    check(type, -1, debug);
+}
+
+Result check(TYPE type){
+    check(type, -1, true);
+}
+
+Result check(TYPE type, int pin) {
+    check(type, pin, true);
 }
