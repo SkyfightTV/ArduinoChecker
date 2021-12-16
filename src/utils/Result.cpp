@@ -1,4 +1,4 @@
-#include "Result.h"
+#include "Enums.h"
 
 static int length(const double *s)
 {
