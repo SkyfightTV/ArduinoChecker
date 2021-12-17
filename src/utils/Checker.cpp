@@ -1,11 +1,14 @@
 #include <DHT.h>
 #include <RTClib.h>
 #include "Checker.h"
+#include "../../lib/dht/DHT.h"
 
 Result checkDHT(uint8_t name, int pin, bool debug) {
     if(debug)
         Serial.println("DHT >> Start checking");
     DHT dht(pin, name);
+    if (debug)
+        Serial.println("DHT >> Name : " + name);
     dht.begin();
     float values[3] = {dht.readTemperature(), dht.readHumidity()};
     if (isnan(values[0]) || isnan(values[1])) {
