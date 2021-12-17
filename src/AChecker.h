@@ -1,4 +1,4 @@
-#include "utils/Checker.h"
+#include "utils/Result.h"
 
 Result check(TYPE type, int pin, bool debug);
 
