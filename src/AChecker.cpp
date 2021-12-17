@@ -1,4 +1,5 @@
 #include "utils/Checker.h"
+#include "AChecker.h"
 
 Result check(TYPE type, int pin, bool debug) {
     float values[] = {};
