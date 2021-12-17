@@ -1,7 +1,6 @@
 #include <DHT.h>
 #include <RTClib.h>
 #include "Checker.h"
-#include "../../lib/dht/DHT.h"
 
 Result checkDHT(uint8_t name, int pin, bool debug) {
     if(debug)
