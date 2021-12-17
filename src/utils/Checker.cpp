@@ -3,12 +3,19 @@
 #include "Checker.h"
 
 Result checkDHT(uint8_t name, int pin, bool debug) {
+    if(debug)
+        Serial.println("DHT >> Start checking");
     DHT dht(pin, name);
     dht.begin();
     float values[3] = {dht.readTemperature(), dht.readHumidity()};
-    if (isnan(values[0]) || isnan(values[1]))
+    if (isnan(values[0]) || isnan(values[1])) {
+        if (debug)
+            Serial.println("DHT >> Failed Result");
         return Result(FAILED, DIGITAL, pin, values);
+    }
     values[2] = dht.computeHeatIndex(values[0], values[1]);
+    if (debug)
+        Serial.println("DHT >> Success Result");
     return Result(SUCCESS, DIGITAL, pin, values);
 }
 
