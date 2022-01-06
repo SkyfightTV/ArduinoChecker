@@ -1,10 +1,9 @@
 #include "AChecker.h"
 
-Result checkDHT(uint8_t name, int pin, bool debug) {
+Result checkDHT(DHT dht, bool debug) {
     if(debug)
         Serial.println("DHT >> Start checking");
-    DHT dht(pin, name);
-    dht.begin(true);
+    dht.begin();
     float values[3] = {dht.readTemperature(), dht.readHumidity()};
     if (isnan(values[0]) || isnan(values[1])) {
         if (debug)
@@ -74,27 +73,27 @@ Result check(TYPE type, int pin, bool debug) {
         case DHT_11:
             if(debug)
                 Serial.println("Check >> DHT_11");
-            return checkDHT(11, pin, debug);
+            return checkDHT(DHT(pin, DHT_11), debug);
             break;
         case DHT_12:
             if(debug)
                 Serial.println("Check >> DHT_12");
-            return checkDHT(12, pin, debug);
+            return checkDHT(DHT(pin, DHT_12), debug);
             break;
         case DHT_21:
             if(debug)
                 Serial.println("Check >> DHT_21");
-            return checkDHT(21, pin, debug);
+            return checkDHT(DHT(pin, DHT_21), debug);
             break;
         case DHT_22:
             if(debug)
                 Serial.println("Check >> DHT_22");
-            return checkDHT(22, pin, debug);
+            return checkDHT(DHT(pin, DHT_22), debug);
             break;
         case AM_2301:
             if(debug)
                 Serial.println("Check >> AM2301");
-            return checkDHT(21, pin, debug);
+            return checkDHT(DHT(pin, AM2301), debug);
             break;
         case PHOTORESISTOR:
             if(debug)
