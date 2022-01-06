@@ -11,7 +11,7 @@ Result checkDHT(uint8_t name, int pin, bool debug) {
     if (isnan(values[0]) || isnan(values[1])) {
         if (debug)
             Serial.println("DHT >> Failed Result");
-        return Result(FAILED, DIGITAL, pin, values);
+        return Result(FAILED, DIGITAL, pin);
     }
     values[2] = dht.computeHeatIndex(values[0], values[1]);
     if (debug) {
@@ -23,13 +23,13 @@ Result checkDHT(uint8_t name, int pin, bool debug) {
             Serial.println(values[i]);
         }
     }
-    return Result(SUCCESS, DIGITAL, pin, values);
+    return Result(SUCCESS, DIGITAL, pin);
 }
 
 Result checkPhotoresistor(int pin, bool debug) {
     int value = analogRead(pin);
     int values[] = {value};
-    return Result(values[0] == -999 ? FAILED : SUCCESS, ANALOG, pin, values);
+    return Result(values[0] == -999 ? FAILED : SUCCESS, ANALOG, pin);
 }
 
 Result checkCTN(int pin, bool debug) {
@@ -40,7 +40,7 @@ Result checkCTN(int pin, bool debug) {
     double Ur = 5.0 * value / 1023;
     double result = (Ur - 1.19) / 52.8E-3;
     values[0] = result;
-    return Result(SUCCESS, ANALOG, pin, values);
+    return Result(SUCCESS, ANALOG, pin);
 }
 
 Result checkRTC(bool debug) {
@@ -48,19 +48,19 @@ Result checkRTC(bool debug) {
     DateTime date = rtc.now();
     float values[] = {};
     unsigned long current = round(millis() / 1000);
-    return Result(current != date.secondstime() ? FAILED : SUCCESS, RTC, -1, values);
+    return Result(current != date.secondstime() ? FAILED : SUCCESS, RTC, -1);
 }
 
 Result checkPotentiometer(int pin, bool debug) {
     int value = analogRead(pin);
     int values[] = {value};
-    return Result(values[0] == -999 ? FAILED : SUCCESS, ANALOG, pin, values);
+    return Result(values[0] == -999 ? FAILED : SUCCESS, ANALOG, pin);
 }
 
 Result checkInfraredSensor(int pin, bool debug) {
     int value = digitalRead(pin);
     int values[] = {value};
-    return Result(value == 0 ? FAILED : SUCCESS, DIGITAL, pin, values);
+    return Result(value == 0 ? FAILED : SUCCESS, DIGITAL, pin);
 }
 
 Result check(TYPE type, int pin, bool debug) {
@@ -70,7 +70,7 @@ Result check(TYPE type, int pin, bool debug) {
         if (debug)
             Serial.println("Check >> NULL PIN");
         float values[] = {};
-        return Result(PIN_NULL, static_cast<const PIN_TYPE>(NULL), pin, values);
+        return Result(PIN_NULL, static_cast<const PIN_TYPE>(NULL), pin);
     }
     switch (type) {
         case DHT_11:
@@ -127,7 +127,7 @@ Result check(TYPE type, int pin, bool debug) {
             if(debug)
                 Serial.println("Check >> NULL");
             float values[] = {};
-            return Result(TYPE_NULL, static_cast<const PIN_TYPE>(NULL), pin, values);
+            return Result(TYPE_NULL, static_cast<const PIN_TYPE>(NULL), pin);
             break;
     }
 }
