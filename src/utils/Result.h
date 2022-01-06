@@ -8,14 +8,12 @@ private:
     RESULT_TYPE resultType;
     PIN_TYPE pinType;
     int pin;
-    double *values;
 public:
-    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, int *values);
-    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, float *values);
-    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, double *values);
+    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin);
+    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin);
+    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin);
 
     RESULT_TYPE getResultType();
     PIN_TYPE getPinType();
     int getPin();
-    double *getValues();
 };

@@ -76,7 +76,7 @@ Result check(TYPE type, int pin, bool debug) {
         case DHT_11:
             if(debug)
                 Serial.println("Check >> DHT_11");
-            //return checkDHT(11, pin, debug);
+            return checkDHT(11, pin, debug);
             break;
         case DHT_12:
             if(debug)
