@@ -1,4 +1,6 @@
 #include "utils/Result.h"
+#include <DHT.h>
+#include <RTClib.h>
 
 Result check(TYPE type, int pin, bool debug);
 
