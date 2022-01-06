@@ -10,8 +10,6 @@ private:
     int pin;
 public:
     Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin);
-    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin);
-    Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin);
 
     RESULT_TYPE getResultType();
     PIN_TYPE getPinType();
