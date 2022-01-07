@@ -1,6 +1,6 @@
 #include "AChecker.h"
 
-Result checkDHT(DHT dht, bool debug) {
+Result checkDHT(DHT dht, int pin, bool debug) {
     if(debug)
         Serial.println("DHT >> Start checking");
     dht.begin();
@@ -73,27 +73,27 @@ Result check(TYPE type, int pin, bool debug) {
         case DHT_11:
             if(debug)
                 Serial.println("Check >> DHT_11");
-            return checkDHT(DHT(pin, DHT_11), debug);
+            return checkDHT(DHT(pin, DHT_11), pin, debug);
             break;
         case DHT_12:
             if(debug)
                 Serial.println("Check >> DHT_12");
-            return checkDHT(DHT(pin, DHT_12), debug);
+            return checkDHT(DHT(pin, DHT_12), pin, debug);
             break;
         case DHT_21:
             if(debug)
                 Serial.println("Check >> DHT_21");
-            return checkDHT(DHT(pin, DHT_21), debug);
+            return checkDHT(DHT(pin, DHT_21), pin, debug);
             break;
         case DHT_22:
             if(debug)
                 Serial.println("Check >> DHT_22");
-            return checkDHT(DHT(pin, DHT_22), debug);
+            return checkDHT(DHT(pin, DHT_22), pin, debug);
             break;
         case AM_2301:
             if(debug)
                 Serial.println("Check >> AM2301");
-            return checkDHT(DHT(pin, AM2301), debug);
+            return checkDHT(DHT(pin, AM2301), pin, debug);
             break;
         case PHOTORESISTOR:
             if(debug)
