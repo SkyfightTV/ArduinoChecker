@@ -1,11 +1,11 @@
 #include <Arduino.h>
 
 enum TYPE {
-    DHT_11,
-    DHT_12,
-    DHT_21,
-    DHT_22,
-    AM_2301,
+    DHT11,
+    DHT12,
+    DHT21,
+    DHT22,
+    AM2301,
     PHOTORESISTOR,
     CTN,
     RTC_CLOCK,
