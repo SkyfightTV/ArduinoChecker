@@ -4,12 +4,12 @@ Result checkDHT(DHT dht, int pin, bool debug) {
     if(debug)
         Serial.println("DHT >> Start checking");
     dht.begin();
-    float values[3] = {dht.readTemperature(), dht.readHumidity()};
-    //if (isnan(values[0]) || isnan(values[1])) {
-      //  if (debug)
-        //    Serial.println("DHT >> Failed Result");
-        //return Result(FAILED, DIGITAL, pin);
-   // }
+    double values[3] = {dht.readTemperature(), dht.readHumidity()};
+    if (isnan(values[0]) || isnan(values[1])) {
+        if (debug)
+            Serial.println("DHT >> Failed Result");
+        return Result(FAILED, DIGITAL, pin);
+    }
     values[2] = dht.computeHeatIndex(values[0], values[1]);
     if (debug) {
         Serial.println("DHT >> Success Result | Values : ");
@@ -20,7 +20,7 @@ Result checkDHT(DHT dht, int pin, bool debug) {
             Serial.println(values[i]);
         }
     }
-    return Result(SUCCESS, DIGITAL, pin);
+    return Result(SUCCESS, DIGITAL, pin, values);
 }
 
 Result checkPhotoresistor(int pin, bool debug) {
