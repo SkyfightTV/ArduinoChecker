@@ -12,7 +12,9 @@ Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, double* values
     this->pinType = pinType;
     this->pin = pin;
     this->values = new double[sizeof values];
-    memcpy(this->values, values, sizeof values);
+
+    for(unsigned i=0; i < sizeof(values); i++)
+        this->values[i] = values[i];
 }
 
 RESULT_TYPE Result::getResultType()
