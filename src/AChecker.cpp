@@ -70,30 +70,30 @@ Result check(TYPE type, int pin, bool debug) {
         return Result(PIN_NULL, static_cast<const PIN_TYPE>(NULL), pin);
     }
     switch (type) {
-        case DHT11:
+        case DHT_11:
             if(debug)
-                Serial.println("Check >> DHT11");
-            return checkDHT(DHT(pin, DHT_11), pin, debug);
+                Serial.println("Check >> DHT_11");
+            return checkDHT(DHT(pin, DHT11), pin, debug);
             break;
-        case DHT12:
+        case DHT_12:
             if(debug)
-                Serial.println("Check >> DHT12");
-            return checkDHT(DHT(pin, DHT_12), pin, debug);
+                Serial.println("Check >> DHT_12");
+            return checkDHT(DHT(pin, DHT12), pin, debug);
             break;
-        case DHT21:
+        case DHT_21:
             if(debug)
-                Serial.println("Check >> DHT21");
-            return checkDHT(DHT(pin, DHT_21), pin, debug);
+                Serial.println("Check >> DHT_21");
+            return checkDHT(DHT(pin, DHT21), pin, debug);
             break;
-        case DHT22:
+        case DHT_22:
             if(debug)
-                Serial.println("Check >> DHT22");
-            return checkDHT(DHT(pin, DHT_22), pin, debug);
+                Serial.println("Check >> DHT_22");
+            return checkDHT(DHT(pin, DHT22), pin, debug);
             break;
-        case AM2301:
+        case AM_2301:
             if(debug)
                 Serial.println("Check >> AM2301");
-            return checkDHT(DHT(pin, AM_2301), pin, debug);
+            return checkDHT(DHT(pin, AM2301), pin, debug);
             break;
         case PHOTORESISTOR:
             if(debug)
