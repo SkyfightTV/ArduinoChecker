@@ -1,5 +1,4 @@
 #include "Checker.h"
-#include <malloc.h>
 
 Result checkDHT(DHT dht, int pin, bool debug)
 {
