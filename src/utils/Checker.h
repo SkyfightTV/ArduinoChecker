@@ -1,4 +1,6 @@
 #include "Result.h"
+#include <DHT.h>
+#include <RTClib.h>
 
 Result checkDHT(uint8_t name, int pin, bool debug);
 

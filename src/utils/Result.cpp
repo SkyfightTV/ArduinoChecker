@@ -1,21 +1,17 @@
+#include <malloc.h>
 #include "Result.h"
-
-#define TAB(TYPE) struct {unsigned long int size; TYPE *data;}
 
 Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin)
 {
-    Result:Result(resultType, pinType, pin, new double[0]);
+    Result:Result(resultType, pinType, pin, malloc(sizeof(struct TAB)));
 }
 
-Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, TAB(double) values)
+Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, TAB *values)
 {
     this->resultType = resultType;
     this->pinType = pinType;
     this->pin = pin;
-    this->values = new double[values.size];
-
-    for(unsigned i=0; i < values.size; i++)
-        this->values[i] = values.data[i];
+    this->values = values;
 }
 
 RESULT_TYPE Result::getResultType()
@@ -33,7 +29,7 @@ int Result::getPin() const
     return this->pin;
 }
 
-double* Result::getValues()
+TAB* Result::getValues()
 {
     return this->values;
 }
