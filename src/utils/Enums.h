@@ -26,7 +26,3 @@ enum RESULT_TYPE {
     PIN_NULL = LOW,
     TYPE_NULL = LOW
 };
-
-enum CARD_TYPE {
-    UNO = 14
-};
