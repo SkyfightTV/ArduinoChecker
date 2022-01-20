@@ -1,4 +1,5 @@
 #include "utils/Result.h"
+#include "../lib/arduino/Arduino.h"
 #include <DHT.h>
 #include <RTClib.h>
 

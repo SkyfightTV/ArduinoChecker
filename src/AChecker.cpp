@@ -1,6 +1,7 @@
 #include "AChecker.h"
 
-Result checkDHT(DHT dht, int pin, bool debug) {
+Result checkDHT(DHT dht, int pin, bool debug)
+{
     if(debug)
         Serial.println("DHT >> Start checking");
     dht.begin();
@@ -23,13 +24,15 @@ Result checkDHT(DHT dht, int pin, bool debug) {
     return Result(SUCCESS, DIGITAL, pin, values);
 }
 
-Result checkPhotoresistor(int pin, bool debug) {
+Result checkPhotoresistor(int pin, bool debug)
+{
     int value = analogRead(pin);
     int values[] = {value};
     return Result(values[0] == -999 ? FAILED : SUCCESS, ANALOG, pin);
 }
 
-Result checkCTN(int pin, bool debug) {
+Result checkCTN(int pin, bool debug)
+{
     int value = analogRead(pin);
     double values[] = {0.0};
     if (value == -999)
@@ -40,7 +43,8 @@ Result checkCTN(int pin, bool debug) {
     return Result(SUCCESS, ANALOG, pin);
 }
 
-Result checkRTC(bool debug) {
+Result checkRTC(bool debug)
+{
     RTC_Millis rtc{};
     DateTime date = rtc.now();
     float values[] = {};
@@ -48,19 +52,22 @@ Result checkRTC(bool debug) {
     return Result(current != date.secondstime() ? FAILED : SUCCESS, RTC, -1);
 }
 
-Result checkPotentiometer(int pin, bool debug) {
+Result checkPotentiometer(int pin, bool debug)
+{
     int value = analogRead(pin);
     int values[] = {value};
     return Result(values[0] == -999 ? FAILED : SUCCESS, ANALOG, pin);
 }
 
-Result checkInfraredSensor(int pin, bool debug) {
+Result checkInfraredSensor(int pin, bool debug)
+{
     int value = digitalRead(pin);
     int values[] = {value};
     return Result(value == 0 ? FAILED : SUCCESS, DIGITAL, pin);
 }
 
-Result check(TYPE type, int pin, bool debug) {
+Result check(TYPE type, int pin, bool debug)
+{
     if(debug)
         Serial.println("Check >> Start");
     if (pin == -1) {
@@ -129,14 +136,17 @@ Result check(TYPE type, int pin, bool debug) {
     }
 }
 
-Result check(TYPE type, bool debug){
+Result check(TYPE type, bool debug)
+{
     check(type, -1, debug);
 }
 
-Result check(TYPE type){
+Result check(TYPE type)
+{
     check(type, -1, true);
 }
 
-Result check(TYPE type, int pin) {
+Result check(TYPE type, int pin)
+{
     check(type, pin, true);
 }
