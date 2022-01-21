@@ -29,7 +29,7 @@ Import the file in .zip into ArduinoIDE
 Import  "AChecker.h" in your projet
 ```
 
-<h2>🛠️ How to use ? :</h2>
+<h2>🛠️ How to use ?</h2>
 
 <h3>Functions : </h3>
 
