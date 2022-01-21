@@ -1,9 +1,9 @@
-#include <malloc.h>
 #include "Result.h"
 
 Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin)
 {
-    Result:Result(resultType, pinType, pin, malloc(sizeof(struct TAB)));
+    struct TAB tab;
+    Result:Result(resultType, pinType, pin, &tab);
 }
 
 Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, TAB *values)
