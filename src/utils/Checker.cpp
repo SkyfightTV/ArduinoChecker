@@ -21,7 +21,7 @@ Result checkDHT(DHT dht, int pin, bool debug)
             Serial.print("Valeur n°");
             Serial.print(i);
             Serial.print(" : ");
-            Serial.println(values[i]);
+            Serial.println(values.data[i]);
         }
     }
     return Result(SUCCESS, DIGITAL, pin, &values);

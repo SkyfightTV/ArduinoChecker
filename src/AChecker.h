@@ -1,4 +1,3 @@
-#include "utils/Result.h"
 #include "utils/Checker.h"
 #include <DHT.h>
 #include <RTClib.h>
