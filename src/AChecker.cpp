@@ -7,7 +7,6 @@ Result check(TYPE type, int pin, bool debug)
     if (pin == -1) {
         if (debug)
             Serial.println("Check >> NULL PIN");
-        float values[] = {};
         return Result(PIN_NULL, static_cast<const PIN_TYPE>(NULL), pin);
     }
     switch (type) {
@@ -64,7 +63,6 @@ Result check(TYPE type, int pin, bool debug)
         default:
             if(debug)
                 Serial.println("Check >> NULL");
-            float values[] = {};
             return Result(TYPE_NULL, static_cast<const PIN_TYPE>(NULL), pin);
             break;
     }
