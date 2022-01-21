@@ -33,17 +33,17 @@ Import  "AChecker.h" in your projet
 
 <h3>Functions : </h3>
 
-<ol>
-  <li>- Result check(TYPE type, int pin, bool debug)</li>
-  <li>- Result check(TYPE type, bool debug)</li>
-  <li>- Result check(TYPE type, int pin)</li>
-  <li>- Result check(TYPE type)</li>
-</ol>
+<ul>
+  <li>Result check(TYPE type, int pin, bool debug)</li>
+  <li>Result check(TYPE type, bool debug)</li>
+  <li>Result check(TYPE type, int pin)</li>
+  <li>Result check(TYPE type)</li>
+</ul>
 
 <h3>Enums :</h3>
 
-<ol>
-  <li>- TYPE : 
+<ul>
+  <li>TYPE : 
     DHT_11,
     DHT_12,
     DHT_21,
@@ -55,21 +55,28 @@ Import  "AChecker.h" in your projet
     POTENTIOMETER,
     SLIDE_SWITCH,
     INFRARED_SENSOR</li>
-  <li>- PIN_TYPE :
+  <li>PIN_TYPE :
     ANALOG,
     DIGITAL,
     RTC</li>
-  <li>- RESULT_TYPE : <br>
+  <li>RESULT_TYPE : <br>
     SUCCESS = HIGH,<br>
     FAILED = LOW,<br>
     PIN_NULL = LOW,<br>
     TYPE_NULL = LOW
-</ol>
+</ul>
 
 <h3>Return class :</h3>
-<ol> 
-  <li></li>
-</ol>
+<ul> 
+  <li>RESULT_TYPE getResultType()</li>
+  <li>PIN_TYPE getPinType()</li>
+  <li>int getPin()</li>
+  <li>TAB* getValues()</li>
+  <ul>
+    <li>unsigned long int size</li>
+    <li>double *data</li>
+  </ul>
+</ul>
 
 <h2>🛡️ License:</h2>
 
