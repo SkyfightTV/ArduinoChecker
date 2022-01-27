@@ -1,39 +1,51 @@
 #include "AChecker.h"
 
-Result check(TYPE type, int pin, bool debug)
-{
-    if(debug)
-        Serial.println("Check >> Start");
-    if (pin == -1) {
-        if (debug)
-            Serial.println("Check >> NULL PIN");
-        return Result(PIN_NULL, static_cast<const PIN_TYPE>(NULL), pin);
-    }
-    switch (type) {
+AChecker::AChecker(TYPE type, int pin, bool debug) {
+    this->type = type;
+    this->pin = pin;
+    this->debug = debug;
+
+    switch (this->type) {
         case DHT_11:
             if(debug)
                 Serial.println("Check >> DHT_11");
-            return checkDHT(DHT(pin, DHT11), pin, debug);
+            this->dht = DHT(pin, DHT11);
             break;
         case DHT_12:
             if(debug)
                 Serial.println("Check >> DHT_12");
-            return checkDHT(DHT(pin, DHT12), pin, debug);
+            this->dht = DHT(pin, DHT12);
             break;
         case DHT_21:
             if(debug)
                 Serial.println("Check >> DHT_21");
-            return checkDHT(DHT(pin, DHT21), pin, debug);
+            this->dht = DHT(pin, DHT21);
             break;
         case DHT_22:
             if(debug)
                 Serial.println("Check >> DHT_22");
-            return checkDHT(DHT(pin, DHT22), pin, debug);
+            this->dht = DHT(pin, DHT22);
             break;
         case AM_2301:
             if(debug)
                 Serial.println("Check >> AM2301");
-            return checkDHT(DHT(pin, AM2301), pin, debug);
+            this->dht = DHT(pin, AM2301);
+            break;
+    }
+    if (this->dht != NULL)
+        this->dht.begin(true);
+}
+
+Result AChecker::get() {
+    switch (type) {
+        case DHT_11:
+        case DHT_12:
+        case DHT_21:
+        case DHT_22:
+        case AM_2301:
+            if(debug)
+                Serial.println("Check >> DHT_11");
+            return checkDHT(this->getDHT(), pin, debug);
             break;
         case PHOTORESISTOR:
             if(debug)
@@ -68,17 +80,18 @@ Result check(TYPE type, int pin, bool debug)
     }
 }
 
-Result check(TYPE type, bool debug)
-{
-    check(type, -1, debug);
+DHT AChecker::getDHT() {
+    return this->dht;
 }
 
-Result check(TYPE type)
-{
-    check(type, -1, true);
+int AChecker::getPin() {
+    return this->pin;
 }
 
-Result check(TYPE type, int pin)
-{
-    check(type, pin, true);
+TYPE AChecker::getType() {
+    return this->type;
+}
+
+bool AChecker::isDebug() {
+    return this->debug;
 }

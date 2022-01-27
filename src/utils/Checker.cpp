@@ -4,7 +4,7 @@ Result checkDHT(DHT dht, int pin, bool debug)
 {
     if(debug)
         Serial.println("DHT >> Start checking");
-    dht.begin();
+    dht.read(pin);
     TAB *values = new TAB();
     values->size = 3;
     values->data[0] = dht.readTemperature();
@@ -24,7 +24,7 @@ Result checkDHT(DHT dht, int pin, bool debug)
             Serial.println(values->data[i]);
         }
     }
-    return Result(SUCCESS, DIGITAL, pin, &values);
+    return Result(SUCCESS, DIGITAL, pin, values);
 }
 
 Result checkPhotoresistor(int pin, bool debug)
