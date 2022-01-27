@@ -1,6 +1,7 @@
 #include "Enums.h"
 
-struct TAB {
+class TAB {
+public:
     unsigned long int size;
     double *data;
 };
