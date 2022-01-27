@@ -5,23 +5,23 @@ Result checkDHT(DHT dht, int pin, bool debug)
     if(debug)
         Serial.println("DHT >> Start checking");
     dht.begin();
-    TAB values = TAB();
-    values.size = 3;
-    values.data[0] = dht.readTemperature();
-    values.data[1] = dht.readHumidity();
-    if (isnan(values.data[0]) || isnan(values.data[1])) {
+    TAB *values = new TAB();
+    values->size = 3;
+    values->data[0] = dht.readTemperature();
+    values->data[1] = dht.readHumidity();
+    if (isnan(values->data[0]) || isnan(values->data[1])) {
         if (debug)
             Serial.println("DHT >> Failed Result");
         return Result(FAILED, DIGITAL, pin);
     }
-    values.data[2] = dht.computeHeatIndex(values.data[0], values.data[1]);
+    values->data[2] = dht.computeHeatIndex(values->data[0], values->data[1]);
     if (debug) {
         Serial.println("DHT >> Success Result | Values : ");
         for (int i = 0; i <3;i++) {
             Serial.print("Valeur n°");
             Serial.print(i);
             Serial.print(" : ");
-            Serial.println(values.data[i]);
+            Serial.println(values->data[i]);
         }
     }
     return Result(SUCCESS, DIGITAL, pin, &values);
