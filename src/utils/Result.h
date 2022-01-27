@@ -2,6 +2,8 @@
 
 class TAB {
 public:
+    TAB();
+
     unsigned long int size;
     double *data;
 };

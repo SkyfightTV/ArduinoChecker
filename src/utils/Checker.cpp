@@ -5,7 +5,7 @@ Result checkDHT(DHT dht, int pin, bool debug)
     if(debug)
         Serial.println("DHT >> Start checking");
     dht.begin();
-    struct TAB values;
+    TAB values = TAB();
     values.size = 3;
     values.data[0] = dht.readTemperature();
     values.data[1] = dht.readHumidity();
@@ -29,7 +29,7 @@ Result checkDHT(DHT dht, int pin, bool debug)
 
 Result checkPhotoresistor(int pin, bool debug)
 {
-    struct TAB values;
+    TAB values = TAB();
     values.size = 1;
     values.data[0] = analogRead(pin);
     return Result(values.data[0] == -999 ? FAILED : SUCCESS, ANALOG, pin, &values);
@@ -42,7 +42,7 @@ Result checkCTN(int pin, bool debug)
         return Result(FAILED, ANALOG, pin);
     double Ur = 5.0 * value / 1023;
     double result = (Ur - 1.19) / 52.8E-3;
-    struct TAB values;
+    TAB values = TAB();
     values.size = 1;
     values.data[0] = result;
     return Result(SUCCESS, ANALOG, pin, &values);
@@ -52,7 +52,7 @@ Result checkRTC(bool debug)
 {
     RTC_Millis rtc{};
     DateTime date = rtc.now();
-    struct TAB values;
+    TAB values = TAB();
     values.size = 1;
     unsigned long current = round(millis() / 1000);
     values.data[0] = date.secondstime();
@@ -61,7 +61,7 @@ Result checkRTC(bool debug)
 
 Result checkPotentiometer(int pin, bool debug)
 {
-    struct TAB values;
+    TAB values = TAB();
     values.size = 1;
     values.data[0] = analogRead(pin);
     return Result(values.data[0] == -999 ? FAILED : SUCCESS, ANALOG, pin, &values);
@@ -69,7 +69,7 @@ Result checkPotentiometer(int pin, bool debug)
 
 Result checkInfraredSensor(int pin, bool debug)
 {
-    struct TAB values;
+    TAB values = TAB();
     values.size = 1;
     values.data[0] = digitalRead(pin);
     return Result(values.data[0] == 0 ? FAILED : SUCCESS, DIGITAL, pin, &values);
