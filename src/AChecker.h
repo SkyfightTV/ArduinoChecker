@@ -1,6 +1,5 @@
 #include "utils/Checker.h"
-#include <DHT.h>
-#include <RTClib.h>
+#include "../lib/dht/DHT.h"
 
 Result check(TYPE type, int pin, bool debug);
 
@@ -16,7 +15,7 @@ private:
     int pin;
     bool debug;
 
-    DHT dht;
+    DHT dht = DHT(0, DHT11);
 public:
     AChecker(TYPE type, int pin, bool debug);
 
