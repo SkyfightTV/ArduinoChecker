@@ -9,6 +9,10 @@ Result checkDHT(DHT dht, int pin, bool debug)
     values->size = 3;
     values->data[0] = dht.readTemperature();
     values->data[1] = dht.readHumidity();
+    Serial.print("Stats : ");
+    Serial.print(values->data[0]);
+    Serial.print(" / ");
+    Serial.print(values->data[1]);
     if (isnan(values->data[0]) || isnan(values->data[1])) {
         if (debug)
             Serial.println("DHT >> Failed Result");
