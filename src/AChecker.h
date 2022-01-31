@@ -16,7 +16,7 @@ private:
     int pin;
     bool debug;
 
-    DHT dht = NULL;
+    DHT dht;
 public:
     AChecker(TYPE type, int pin, bool debug);
 
