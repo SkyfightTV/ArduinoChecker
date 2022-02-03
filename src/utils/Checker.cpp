@@ -4,7 +4,8 @@ Result checkDHT(DHT dht, int pin, bool debug)
 {
     if(debug)
         Serial.println("DHT >> Start checking");
-    dht.read(pin);
+    dht.read(true);
+    Serial.println("Ouais on check");
     TAB *values = new TAB();
     values->size = 3;
     values->data[0] = dht.readTemperature();
