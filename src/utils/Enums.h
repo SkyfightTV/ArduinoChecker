@@ -21,8 +21,8 @@ enum PIN_TYPE {
 };
 
 enum RESULT_TYPE {
-    SUCCESS = HIGH,
-    FAILED = LOW,
-    PIN_NULL = LOW,
-    TYPE_NULL = LOW
+    SUCCESS = 1,
+    FAILED = 0,
+    PIN_NULL = 0,
+    TYPE_NULL = 0
 };

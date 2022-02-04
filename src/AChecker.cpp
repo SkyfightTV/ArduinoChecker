@@ -9,30 +9,35 @@ AChecker::AChecker(TYPE type, int pin, bool debug) {
         case DHT_11:
             if(debug)
                 Serial.println("Check >> DHT_11");
+            pinMode(pin, INPUT);
             this->dht = DHT(pin, DHT11);
             this->dht.begin();
             break;
         case DHT_12:
             if(debug)
                 Serial.println("Check >> DHT_12");
+            pinMode(pin, INPUT);
             this->dht = DHT(pin, DHT12);
             this->dht.begin();
             break;
         case DHT_21:
             if(debug)
                 Serial.println("Check >> DHT_21");
+            pinMode(pin, INPUT);
             this->dht = DHT(pin, DHT21);
             this->dht.begin();
             break;
         case DHT_22:
             if(debug)
                 Serial.println("Check >> DHT_22");
+            pinMode(pin, INPUT);
             this->dht = DHT(pin, DHT22);
             this->dht.begin();
             break;
         case AM_2301:
             if(debug)
                 Serial.println("Check >> AM2301");
+            pinMode(pin, INPUT);
             this->dht = DHT(pin, AM2301);
             this->dht.begin();
             break;

@@ -2,8 +2,7 @@
 
 Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin)
 {
-    struct TAB tab;
-    Result:Result(resultType, pinType, pin, &tab);
+    Result(resultType, pinType, pin, new TAB());
 }
 
 Result::Result(RESULT_TYPE resultType, PIN_TYPE pinType, int pin, TAB *values)
