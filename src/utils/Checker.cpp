@@ -13,9 +13,10 @@ Result checkDHT(DHT dht, int pin, bool debug)
             Serial.println("DHT >> Failed Result");
         return Result(FAILED, DIGITAL, pin);
     }
+    values->data[2] = dht.computeHeatIndex(values->data[0], values->data[1]);
     if (debug) {
         Serial.println("DHT >> Success Result | Values : ");
-        for (int i = 0; i < 2;i++) {
+        for (int i = 0; i < 3;i++) {
             Serial.print("Valeur n°");
             Serial.print(i);
             Serial.print(" : ");
